@@ -1,0 +1,114 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+//libs ("libmyturbulencemodels.so");
+//libs ("libkOmegaSSTKCIModelsComb.so");
+
+application     simpleFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         50000;
+
+deltaT          1;
+
+writeControl    adjustableRunTime;
+//writeControl  timeStep;
+
+writeInterval   5000;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+//writeFormat   binary;
+
+writePrecision  8;
+
+writeCompression compressed;
+//writeCompression off;
+
+timeFormat      general;
+
+timePrecision   9;
+
+runTimeModifiable no;
+
+//OptimisationSwitches
+//{
+//    fileHandler collated;
+//}
+
+functions
+{
+   // #includeFunc residuals
+   // #includeFunc yPlus
+
+   residuals
+   {
+      functionObjectLibs ("libutilityFunctionObjects.so");
+      type            residuals;
+      outputControl   timeStep;
+      outputInterval  2;
+      fields
+      (
+         U
+         p
+      );
+   }
+
+  /*  forces
+    {
+        type forces;
+        functionObjectLibs ("libforces.so");
+        outputControl timeStep;
+        outputInterval 1;
+        patches ( "cube" );
+        pName p;
+        UName U;
+        rhoName rhoInf;
+        log true;
+        rhoInf 1.0;      // Reference density, fluid
+        CofR (0 0 0);  // Origin for moment calculations
+    }
+
+    forceCoeffs
+    {
+        type forceCoeffs;
+        functionObjectLibs ( "libforces.so" );
+        outputControl timeStep;
+        outputInterval 1;
+
+        patches     ( "cube" );
+        pName       p;
+        UName       U;
+        rhoName     rhoInf;      // Indicates incompressible
+        rhoInf      1.0;            // Reference density, fluid
+        log         true;
+        liftDir     (0 0 1);
+        dragDir     (1 0 0);
+        CofR        (0 0 0);     // Axle midpoint on ground
+        pitchAxis   (0 1 0);
+        magUInf     1;
+        lRef        0.5;            // Diameter of cylinder
+        Aref        0.5;          // Ref. Area = cross sectional area
+    } */
+}
+// ************************************************************************* //

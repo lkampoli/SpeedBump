@@ -1,0 +1,311 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.2.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// NOTE OF6 setting
+//type sets; // surlineFaces;
+type surfaces;
+libs ("libsampling.so");
+
+setFormat raw;
+//surlineFaceFormat vtk;
+surfaceFormat vtk;
+
+formatOptions
+{
+    ensight
+    {
+        format  ascii; //;
+    }
+}
+
+interpolationScheme cellPoint;
+
+fields
+(
+//wallShearStress
+//U
+//R
+//k
+//wallGradU
+p
+);
+
+
+sets
+(
+    x_m20p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (-20.0 0 0); //
+        end         (-20.0 8 0); // 
+    }
+
+    x_m2p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (-2.0 0 0); //
+        end         (-2.0 8 0); // 
+    }
+
+    x_m1p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (-1.0 0 0); //
+        end         (-1.0 8 0); // 
+    }
+   
+    x_0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (0 0 0); //
+        end         (0 8 0); // 
+    }
+   
+    x_1p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (1.0 0 0); //
+        end         (1.0 8 0); // 
+    }
+   
+    x_2p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (2.0 0 0); //
+        end         (2.0 8 0); // 
+    }
+   
+    x_3p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (3.0 0 0); //
+        end         (3.0 8 0); // 
+    }
+   
+    x_4p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (4.0 0 0); //
+        end         (4.0 8 0); // 
+    }
+  
+    x_5p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (5.0 0 0); //
+        end         (5.0 8 0); // 
+    }
+   
+    x_6p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (6.0 0 0); //
+        end         (6.0 8 0); // 
+    }
+   
+    x_7p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (7.0 0 0); //
+        end         (7.0 8 0); // 
+    }
+   
+    x_8p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (8.0 0 0); //
+        end         (8.0 8 0); // 
+    }
+   
+    x_10p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (10.0 0 0); //
+        end         (10.0 8 0); // 
+    }
+   
+    x_12p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (12.0 0 0); //
+        end         (12.0 8 0); // 
+    }
+   
+    x_14p0_h
+    {
+        type        lineFace;
+        axis        y;
+
+        start       (14.0 0 0); //
+        end         (14.0 8 0); // 
+    }
+
+    y_0p5_h_x_2p0_h
+    {
+        type        lineFace;
+        axis        z;
+
+        start       (2.0 0.5 -4.0); //
+        end         (2.0 0.5  4.0); // 
+    }
+   
+    y_0p5_h_x_3p0_h
+    {
+        type        lineFace;
+        axis        z;
+
+        start       (3.0 0.5 -4.0); //
+        end         (3.0 0.5  4.0); // 
+    }
+   
+    y_0p5_h_x_4p0_h
+    {
+        type        lineFace;
+        axis        z;
+
+        start       (4.0 0.5 -4.0); //
+        end         (4.0 0.5  4.0); // 
+    }
+   
+    y_0p5_h_x_6p0_h
+    {
+        type        lineFace;
+        axis        z;
+
+        start       (6.0 0.5 -4.0); //
+        end         (6.0 0.5  4.0); // 
+    }
+   
+    y_0p5_h_x_8p0_h
+    {
+        type        lineFace;
+        axis        z;
+
+        start       (8.0 0.5 -4.0); //
+        end         (8.0 0.5  4.0); // 
+    }
+
+    seven_probes_loc_ave_p_ref_cal
+    {
+        type        lineFace;
+        axis        z;
+
+        start       (-11.9287 9.789 -3.8); //
+        end         (-11.9287 9.789  3.8); // 
+    }
+
+);
+
+surfaces
+(
+bott_wall
+{
+type patch;
+patches ("bott");
+interpolate true;
+triangulate false;
+}
+
+Z_0_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+        }
+
+Z_0p25h_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0.25);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+        }
+
+Z_0p5h_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0.5);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+        }
+
+Z_1h_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 1);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+        }
+
+X_0_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0);  // Notet that the plane does not match up with the mesh
+                normalVector    (1 0 0);
+            }
+            interpolate         true;
+        }
+);
+
+// *********************************************************************** //

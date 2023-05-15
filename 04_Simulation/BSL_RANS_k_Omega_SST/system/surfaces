@@ -1,0 +1,102 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+
+surfaces
+{
+    type            surfaces;
+    libs            ("libsampling.so");
+    writeControl    writeTime;
+
+    surfaceFormat   vtk; //raw;
+
+    interpolationScheme cellPoint;
+    
+    formatOptions
+    {
+        ensight
+        {
+            format  ascii; //;
+        }
+    }
+    
+    fields
+    (
+    wallShearStress
+    U
+    R
+    k
+    wallGradU
+    p
+    );
+
+    surfaces
+    (
+	bott_wall
+	{
+		type patch;
+		patches ("bott");
+		interpolate true;
+		triangulate false;
+	}
+
+	Z_0_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+	    triangulate     false;
+        }
+
+	Z_0p25h_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0.25);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+	    triangulate     false;
+        }
+
+	Z_0p5h_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0.5);  // Notet that the plane does not match up with the mesh
+                normalVector    (0 0 1);
+            }
+            interpolate         true;
+	    triangulate     false;
+        }
+	X_0_Plane
+        {
+            type                cuttingPlane;
+            planeType           pointAndNormal;
+            pointAndNormalDict
+            {
+                basePoint       (0 0 0);  // Notet that the plane does not match up with the mesh
+                normalVector    (1 0 0);
+            }
+            interpolate         true;
+	    triangulate     false;
+        }
+
+
+    );
+
+// ************************************************************************* //

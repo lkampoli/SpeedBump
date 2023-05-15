@@ -1,0 +1,49 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      meshQualityDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Include defaults parameters from master dictionary
+#includeEtc "caseDicts/meshQualityDict"
+
+//- minFaceWeight (0 -> 0.5)
+minFaceWeight 0.02;
+
+maxNonOrtho 95;//65;
+minTetQuality -1e30;//1e-30; //minimum quality of tetrahedral cells from cell decomposition; particle tracking requires a small positive number (e.g.  1e-15), otherwise a large negative number improves layer insertion.
+minVol 1e-30;//1e-13;
+maxBoundarySkewness 30;//20;//
+maxInternalSkewness 15;//
+minVolRatio     0.001;//0.01;
+minDeterminant  0.0001;//0.001;
+minTwist        -1;//0.02;
+maxConcave      90;
+
+// default values in OF24
+   /* maxNonOrtho     65;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave      80;
+    minVol          1e-13;
+    minTetQuality   1e-15;
+    minArea         -1;
+    minTwist        0.02;
+    minDeterminant  0.001;
+    minFaceWeight   0.02;
+    minVolRatio     0.01;
+    minTriangleTwist -1;
+    nSmoothScale    4;
+    errorReduction  0.9; */
+
+// ************************************************************************* //
